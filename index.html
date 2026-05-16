@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sashwat Portfolio</title>
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial, Helvetica, sans-serif;
+      scroll-behavior:smooth;
+    }
+
+    body{
+      background:#0f0b1a;
+      color:white;
+      overflow-x:hidden;
+    }
+    body::before{
+      content:"";
+      position:fixed;
+      width:500px;
+      height:500px;
+      background:#b57cff;
+      filter:blur(180px);
+      opacity:0.25;
+      top:-150px;
+      left:-150px;
+      z-index:-1;
+    }
+
+    body::after{
+      content:"";
+      position:fixed;
+      width:400px;
+      height:400px;
+      background:#c98fff;
+      filter:blur(180px);
+      opacity:0.2;
+      bottom:-120px;
+      right:-100px;
+      z-index:-1;
+    }
+
+    nav{
+      width:100%;
+      padding:20px 10%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      position:sticky;
+      top:0;
+      backdrop-filter:blur(10px);
+      background:rgba(15,11,26,0.5);
+      z-index:100;
+    }
+
+    nav h1{
+      color:#d9b3ff;
+      text-shadow:0 0 10px #c77dff;
+    }
+
+    nav ul{
+      display:flex;
+      gap:30px;
+      list-style:none;
+    }
+
+    nav ul li a{
+      text-decoration:none;
+      color:white;
+      transition:0.3s;
+    }
+
+    nav ul li a:hover{
+      color:#d9b3ff;
+      text-shadow:0 0 10px #c77dff;
+    }
+
+    /* Hero */
+
+    .hero{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:50px 10%;
+    }
+
+    .hero-container{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:60px;
+      flex-wrap:wrap;
+    }
+
+    .hero-content{
+      flex:1;
+      min-width:300px;
+    }
+
+    .hero h2{
+      font-size:55px;
+      margin-bottom:20px;
+    }
+
+    .hero h2 span{
+      color:#d8a8ff;
+      text-shadow:
+      0 0 10px #c77dff,
+      0 0 20px #c77dff,
+      0 0 40px #c77dff;
+    }
+
+    .hero p{
+      color:#cfcfcf;
+      line-height:1.7;
+      margin-bottom:35px;
+      font-size:18px;
+    }
+
+    .profile-frame{
+      width:320px;
+      height:320px;
+      border-radius:50%;
+      padding:8px;
+      background:linear-gradient(135deg,#c77dff,#e0aaff,#9d4edd);
+      box-shadow:
+      0 0 25px #c77dff,
+      0 0 60px rgba(199,125,255,0.6);
+      animation:glow 3s infinite alternate;
+    }
+
+    .profile-frame img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      border-radius:50%;
+      border:5px solid #120d1f;
+    }
+
+    @keyframes glow{
+      from{
+        box-shadow:
+        0 0 20px #c77dff,
+        0 0 50px rgba(199,125,255,0.5);
+      }
+
+      to{
+        box-shadow:
+        0 0 35px #e0aaff,
+        0 0 80px rgba(224,170,255,0.8);
+      }
+    }
+
+    .btn{
+      display:inline-block;
+      padding:14px 32px;
+      border-radius:40px;
+      text-decoration:none;
+      color:white;
+      background:linear-gradient(90deg,#a855f7,#d8b4fe);
+      box-shadow:
+      0 0 10px #c77dff,
+      0 0 30px #c77dff;
+      transition:0.3s;
+    }
+
+    .btn:hover{
+      transform:translateY(-4px) scale(1.03);
+      box-shadow:
+      0 0 20px #d8b4fe,
+      0 0 50px #d8b4fe;
+    }
+
+    .section{
+      padding:100px 10%;
+    }
+
+    .section-title{
+      font-size:38px;
+      margin-bottom:50px;
+      color:#ddb7ff;
+      text-shadow:0 0 12px #c77dff;
+      text-align:center;
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:30px;
+    }
+
+    .card{
+      background:rgba(255,255,255,0.05);
+      border:1px solid rgba(255,255,255,0.1);
+      padding:30px;
+      border-radius:20px;
+      backdrop-filter:blur(10px);
+      transition:0.3s;
+    }
+
+    .card:hover{
+      transform:translateY(-8px);
+      border-color:#c77dff;
+      box-shadow:0 0 25px rgba(199,125,255,0.5);
+    }
+
+    .card h3{
+      margin-bottom:15px;
+      color:#e3c3ff;
+    }
+
+    .card p{
+      color:#d0d0d0;
+      line-height:1.6;
+    }
+
+    .certificates{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:30px;
+    }
+
+    .certificate-card{
+      text-align:center;
+      padding:35px 20px;
+      border-radius:20px;
+      background:rgba(255,255,255,0.04);
+      border:1px solid rgba(255,255,255,0.1);
+      transition:0.3s;
+    }
+
+    .certificate-card:hover{
+      transform:translateY(-8px);
+      box-shadow:0 0 25px rgba(199,125,255,0.5);
+      border-color:#c77dff;
+    }
+
+    .certificate-card h3{
+      margin-top:15px;
+      color:#f0d0ff;
+      font-size:24px;
+    }
+
+    .certificate-card p{
+      margin-top:10px;
+      color:#cfcfcf;
+    }
+
+    .certificate-icon{
+      font-size:50px;
+      text-shadow:0 0 20px #c77dff;
+    }
+
+    .contact-box{
+      max-width:700px;
+      margin:auto;
+      text-align:center;
+      padding:50px;
+      border-radius:25px;
+      background:rgba(255,255,255,0.05);
+      border:1px solid rgba(255,255,255,0.1);
+      backdrop-filter:blur(10px);
+      box-shadow:0 0 25px rgba(199,125,255,0.3);
+    }
+
+    .contact-box h3{
+      font-size:32px;
+      margin-bottom:25px;
+      color:#f0d0ff;
+    }
+
+    .contact-item{
+      margin:18px 0;
+      font-size:20px;
+      color:#d8d8d8;
+    }
+
+    .contact-item span{
+      color:#d8a8ff;
+      font-weight:bold;
+      text-shadow:0 0 10px #c77dff;
+    }
+
+    footer{
+      text-align:center;
+      padding:30px;
+      color:#999;
+      border-top:1px solid rgba(255,255,255,0.1);
+      margin-top:50px;
+    }
+
+    @media(max-width:900px){
+
+      .hero-container{
+        flex-direction:column-reverse;
+        text-align:center;
+      }
+
+      .hero h2{
+        font-size:42px;
+      }
+
+      nav{
+        flex-direction:column;
+        gap:15px;
+      }
+
+      nav ul{
+        gap:15px;
+      }
+
+      .profile-frame{
+        width:240px;
+        height:240px;
+      }
+
+      .contact-box{
+        padding:35px 20px;
+      }
+
+      .contact-item{
+        font-size:16px;
+      }
+
+    }
+
+  </style>
+</head>
+<body>
+
+
+  <nav>
+
+    <h1>Sashwat.</h1>
+
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#certificates">Certificates</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+
+  </nav>
+
+  <section class="hero">
+
+    <div class="hero-container">
+
+      <div class="hero-content">
+
+        <h2>Hello, I'm <span>Sashwat</span></h2>
+
+        <p>
+          A creative developer passionate about futuristic UI,
+          game development, AR experiences, AI integrations,
+          and interactive web design based in Pune, India.
+        </p>
+
+        <a href="#projects" class="btn">View Projects</a>
+
+      </div>
+
+      <div class="profile-frame">
+
+        <img src="photo.jpg" alt="Profile Photo">
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <section class="section" id="projects">
+
+    <h2 class="section-title">Projects</h2>
+
+    <div class="cards">
+
+      <div class="card">
+        <h3>AR Farming System</h3>
+
+        <p>
+          Android AR sprinkler placement system built using Unity and AR Foundation.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>AI NPC Game</h3>
+
+        <p>
+          RPG Maker MV game with ChatGPT-powered NPC conversations and memory.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Climate Change Project</h3>
+
+        <p>
+          Interactive awareness project for women farmers using AR technology.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+  <section class="section" id="certificates">
+
+    <h2 class="section-title">Certificates</h2>
+
+    <div class="certificates">
+
+      <div class="certificate-card">
+
+        <div class="certificate-icon">🌐</div>
+
+        <h3>Cisco</h3>
+
+        <p>
+          Networking, cybersecurity, and technical learning certifications.
+        </p>
+
+      </div>
+
+      <div class="certificate-card">
+
+        <div class="certificate-icon">🤖</div>
+
+        <h3>Anthropic</h3>
+        <p>
+          AI and responsible artificial intelligence learning certifications.
+        </p>
+      </div>
+      <div class="certificate-card">
+        <div class="certificate-icon">💼</div>
+        <h3>NASSCOM</h3>
+        <p>
+          Industry skill development and technology program certifications.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="contact">
+    <h2 class="section-title">Contact Me</h2>
+    <div class="contact-box">
+      <h3>Let's Connect</h3>
+      <div class="contact-item">
+        <span>Email:</span> sashwatshende2007@gmail.com
+      </div>
+      <div class="contact-item">
+        <span>Phone:</span> +91 9137207683
+      </div>
+      <div class="contact-item">
+        <span>Location:</span> Pune, Maharashtra, India
+      </div>
+    </div>
+  </section>
+  <footer>
+    © 2026 Sashwat Shende 
+  </footer>
+</body>
+</html>
